@@ -15,7 +15,7 @@ void swap(int *arr, int i, int j){
 	arr[j] = aux;
 }
 
-void insertion_sort(int *arr, int n){
+void InsertionSort(int *arr, int n){
 	for(int i=1; i<n; i++){
 		int j=i;
 		for(int k=j; k>0; k--){
@@ -65,14 +65,35 @@ void merge(int *A, int l, int m, int r){
 }	
 
 
-void merge_sort(int *A, int l, int r){
+void MergeSort(int *A, int l, int r){
 	if(l>=r){
 		return;
 	}
 	int m = l + (r - l) / 2;
-	merge_sort(A, l, m);
-	merge_sort(A, m+1, r);
+	MergeSort(A, l, m);
+	MergeSort(A, m+1, r);
 	merge(A, l,m,r);
+}
+
+int particion(int *A, int l, int r){
+	int x = A[r];
+	int i = l-1;
+	for(int j=l; j<r; j++){
+		if(A[j]<=x){
+			i = i+1;
+			swap(A,i,j);
+		}
+	}
+	swap(A,i+1,r);
+	return i+1;
+}
+
+void QuickSort(int *A, int l, int r){
+	if(l<r){
+		int q = particion(A,l,r);
+		QuickSort(A,l,q-1);
+		QuickSort(A,q+1,r);
+	}
 }
 
 
@@ -82,7 +103,7 @@ int main(){
 	int a[n]={20,7,1,3,4,10,15};
 	cout << "ARREGLO NO ORDENADO\n";
 	print(a,n);
-	merge_sort(a,0,n);
+	QuickSort(a,0,n);
 	cout << "\nARREGLO ORDENADO\n";
 	print(a,n);
 
