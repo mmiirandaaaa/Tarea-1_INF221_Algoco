@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
+#include "Ordenamiento.h"
 using namespace std;
 
-void print(int *arr, int n){
+void PrintArr(int *arr, int n){
 	cout << "[" << arr[0];
 	for(int i=1; i<n; i++){
 		cout << ", " << arr[i];
@@ -94,18 +95,4 @@ void QuickSort(int *A, int l, int r){
 		QuickSort(A,l,q-1);
 		QuickSort(A,q+1,r);
 	}
-}
-
-
-
-int main(){
-	int n=7;
-	int a[n]={20,7,1,3,4,10,15};
-	cout << "ARREGLO NO ORDENADO\n";
-	print(a,n);
-	QuickSort(a,0,n);
-	cout << "\nARREGLO ORDENADO\n";
-	print(a,n);
-
-	return 0;
 }
