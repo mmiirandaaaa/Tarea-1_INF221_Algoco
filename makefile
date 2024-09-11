@@ -11,4 +11,4 @@ Ordenamiento.o:
 
 .PHONY: clean
 clean:
-	rm -rf *.o out *.h.gch
+	rm -rf *.o out *.h.gch *.png
